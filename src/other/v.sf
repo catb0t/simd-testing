@@ -1,0 +1,8 @@
+func str_to_int (Str val) {
+  val.prepend!('-') if (val[0] != '-')
+  const val_rest = [ val[1 ..^ val.len] ]
+  (val[0] == '-' ? -1 : 1) * [val_rest.len ^.. 0, val_rest].zip.map{ (10 ** .[0]) * .[1] }.sum
+}
+
+say str_to_int("255").dump
+say str_to_int("-255").dump
